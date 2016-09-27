@@ -28,6 +28,12 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
+        if user_signed_in?
+          @account.update_attributes(:user_id => current_user.id, :subdomain => @account.generate_subdomain)
+        else
+          @new_user = User.create(:email => @account.resto_mail, :password => @account.generate_password, :password_confirmation => @account.generate_password)
+          @account.update_attributes(:subdomain => @account.generate_subdomain, :user_id => @new_user.id)          
+        end
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }
       else

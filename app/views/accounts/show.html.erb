@@ -20,5 +20,15 @@
   <%= @account.subdomain %>
 </p>
 
+<p>
+  <strong>Generate Subdomain:</strong>
+  <%= @account.generate_subdomain %>
+</p>
+
+<p>
+  <strong>Generate Password:</strong>
+  <%= @account.generate_password %>
+</p>
+
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
