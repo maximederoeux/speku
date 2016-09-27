@@ -1,33 +1,52 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'New Account', new_account_path, class: "btn btn-default btn-block" %>
 
-<h1>Accounts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Resto name</th>
-      <th>Resto mail</th>
-      <th>User</th>
-      <th>Subdomain</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+      <div class="row">
+        <div class="col-md-3">
+          Resto name
+        </div>
+        <div class="col-md-3">
+          Resto mail
+        </div>
+        <div class="col-md-1">
+          User
+        </div>
+        <div class="col-md-3">
+          Subdomain
+        </div>
+        <div class="col-md-2">
+          
+        </div>        
+      </div>
+    </li>
 
-  <tbody>
-    <% @accounts.each do |account| %>
-      <tr>
-        <td><%= account.resto_name %></td>
-        <td><%= account.resto_mail %></td>
-        <td><%= account.user_id %></td>
-        <td><%= account.subdomain %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @accounts.each do |account| %>
 
-<br>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-3">
+          <%= account.resto_name %>
+        </div>
+        <div class="col-md-3">
+          <%= account.resto_mail %>
+        </div>
+        <div class="col-md-1">
+          <%= account.user_id %>
+        </div>
+        <div class="col-md-3">
+          <%= account.subdomain %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to 'Show', account %><br>
+          <%= link_to 'Edit', edit_account_path(account) %>
+          <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>      
+      </div>      
+    </li>
 
-<%= link_to 'New Account', new_account_path %>
+  <% end %>
+</ul>
+
+
